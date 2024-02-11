@@ -1,0 +1,34 @@
+services:
+  # https://cheshirecat.ai/local-models-with-ollama/
+  ollama-service:
+    container_name: ollama_pi_local
+    image: ollama/ollama:latest
+    volumes:
+      - ./ollama:/root/.ollama
+    expose:
+      - 11434
+
+  download-model:
+    image: curlimages/curl:8.6.0
+    # use Ollama into a container
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "tinydolphin"}']
+    # use Ollama, installed locally on the host, from a container
+    #entrypoint: ["curl", "http://host.docker.internal:11434/api/pull", "-d", '{"name": "tinydolphin"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
+
+  python-environment:
+    build:
+      context: ./.docker/langchain-python
+      dockerfile: Dockerfile
+    container_name: python-demo
+    depends_on:
+      ollama-service:
+        condition: service_started
+    environment:
+      - OLLAMA_BASE_URL=http://ollama-service:11434
+    volumes:
+      - ./python-demo:/python-demo
+    ports:
+      - 8000:8000
