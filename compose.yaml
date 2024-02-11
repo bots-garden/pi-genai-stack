@@ -9,26 +9,15 @@ services:
       - 11434:11434
     # docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 
-  download-tinydolphin-model:
+  download-model:
     image: curlimages/curl:8.6.0
     # use Ollama into a container
     entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "tinydolphin"}']
+    #entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "phi"}']
+    #entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "orca-mini:7b"}']
+
     # use Ollama, installed locally on the host, from a container
     #entrypoint: ["curl", "http://host.docker.internal:11434/api/pull", "-d", '{"name": "tinydolphin"}']
-    depends_on:
-      ollama-service:
-        condition: service_started
-
-  download-phi-model:
-    image: curlimages/curl:8.6.0
-    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "phi"}']
-    depends_on:
-      ollama-service:
-        condition: service_started
-
-  download-orca-mini-model:
-    image: curlimages/curl:8.6.0
-    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "orca-mini:7b"}']
     depends_on:
       ollama-service:
         condition: service_started
