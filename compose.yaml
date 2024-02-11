@@ -5,8 +5,9 @@ services:
     image: ollama/ollama:latest
     volumes:
       - ./ollama:/root/.ollama
-    expose:
-      - 11434
+    ports:
+      - 11434:11434
+    # docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 
   download-model:
     image: curlimages/curl:8.6.0
