@@ -13,8 +13,6 @@ llm = ollama.Ollama(
 )
 
 llm.invoke("could you create a Dockerfile for a node.js application?")
-#llm.invoke("how to build a wasm binary with tinygo? What is the command?")
-
 
 print('\n')
 
