@@ -22,7 +22,7 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 print("🔪 splitting the document...\n")
 texts = text_splitter.split_text(my_data)
 
-embeddings = OllamaEmbeddings(base_url=ollama_base_url, model='llama2')
+embeddings = OllamaEmbeddings(base_url=ollama_base_url, model='tinydolphin')
 
 print("📦 embedding the document into the database...\n")
 docsearch = Chroma.from_texts(

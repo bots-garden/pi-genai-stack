@@ -7,21 +7,19 @@ services:
       - ./ollama:/root/.ollama
     ports:
       - 11434:11434
-    # docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 
   download-model:
     image: curlimages/curl:8.6.0
-    # use Ollama into a container
     entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "tinydolphin"}']
+    # You can use other models
     #entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "phi"}']
     #entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "orca-mini:7b"}']
-
-    # use Ollama, installed locally on the host, from a container
-    #entrypoint: ["curl", "http://host.docker.internal:11434/api/pull", "-d", '{"name": "tinydolphin"}']
     depends_on:
       ollama-service:
         condition: service_started
 
+  # 🚧 This is a work in progress
+  # more samples to come
   python-environment:
     build:
       context: ./.docker/langchain-python
