@@ -15,7 +15,9 @@ Use the `python` with the interactive mode:
 docker exec --workdir /python-demo -it python-demo /bin/bash
 ```
 
-Run a python file:
+Run the python files:
 ```bash
-python3 hello.py
+python3 1-give-me-a-dockerfile.py
+# or
+python3 2-tell-me-more-about-docker-and-wasm.py
 ```
