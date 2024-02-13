@@ -21,3 +21,7 @@ python3 1-give-me-a-dockerfile.py
 # or
 python3 2-tell-me-more-about-docker-and-wasm.py
 ```
+
+## Blog posts
+
+- Host Ollama and TinyDolphin LLM on a Pi5 with Docker Compose: [Run Ollama on a Pi5](https://k33g.hashnode.dev/run-ollama-on-a-pi5)
