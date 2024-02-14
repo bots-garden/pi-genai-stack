@@ -1,6 +1,9 @@
 # pi-genai-stack
 
-The main objective is to run 🦙 @ollama and 🐬 TinyDolphin on a Raspberry Pi 5 with @docker #Compose.
+- The main objective is to run 🦙 **Ollama** and 🐬 **TinyDolphin** on a **Raspberry Pi 5** with 🐳 **Docker Compose**.
+- The stack provides development environments to experiment with **Ollama** and 🦜🔗 **Lanchain** without installing anything:
+  - Python dev environment *(available)*
+  - JavaScript dev environment *(soon)*
 
 ## How to install the stack on the Pi
 
@@ -26,7 +29,13 @@ python3 1-give-me-a-dockerfile.py
 python3 2-tell-me-more-about-docker-and-wasm.py
 ```
 
-## How to update Ollam
+## Use the Python dev environment
+
+The Python dev environment is a Web IDE based on [Coder Server](https://github.com/coder/code-server) with the Python runtime and tools. The environment is starded as a Docker Compose service and you can open the IDE with this URL: http://localhost:3000.
+
+![python dev environment](documents/pictures/python-dev-environment.png)
+
+## How to update the Ollam runtime (== new image)
 
 ```bash
 cd pi-genai-stack

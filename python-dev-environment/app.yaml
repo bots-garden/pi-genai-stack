@@ -1,5 +1,4 @@
 services:
-  # GenAI application
   python-app-tpl:
     entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_APP_TPL_HTTP_PORT}", "/python-dev-environment/workspace"]
     environment: &environment-python
@@ -15,7 +14,6 @@ services:
     depends_on:
       ollama-service:
         condition: service_started
-    #platform: linux/${LINUX_ARCH}
     volumes: &volumes-python
       - ../python-dev-environment:/python-dev-environment
     ports:
@@ -27,5 +25,4 @@ services:
     entrypoint: ["/python-dev-environment/.tasks/init.sh"]
     environment: *environment-python
     build: *build-python  
-    #platform: linux/${LINUX_ARCH}
     volumes: *volumes-python
