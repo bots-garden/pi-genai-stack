@@ -6,6 +6,7 @@ The main objective is to run 🦙 @ollama and 🐬 TinyDolphin on a Raspberry Pi
 
 ```bash
 git clone git@github.com:bots-garden/pi-genai-stack.git
+# or git clone https://github.com/bots-garden/pi-genai-stack.git
 cd pi-genai-stack
 docker compose up
 ```
@@ -26,13 +27,21 @@ python3 1-give-me-a-dockerfile.py
 python3 2-tell-me-more-about-docker-and-wasm.py
 ```
 
-## How to update Ollam
+## How to update the Ollama image
 
 ```bash
 cd pi-genai-stack
 docker compose down
 docker compose up --build
 ```
+
+## How to update the project on your Pi
+
+```bash
+cd pi-genai-stack
+git pull
+```
+
 
 ## Blog posts
 
