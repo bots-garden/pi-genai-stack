@@ -1,0 +1,11 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Cobalt2",
+  "editor.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.detectIndentation": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000
+}

@@ -9,3 +9,5 @@ include:
   # Start GenAI application demo
   - python-demo/app.yaml
 
+  # Start the Python dev environment
+  - python-dev-environment/app.yaml

@@ -1,20 +1,11 @@
 {
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Catppuccin Macchiato",
-    "editor.fontSize": 14,
-    "terminal.integrated.fontSize": 14
-    ,
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "editor.detectIndentation": true,
-    "go.lintTool": "golint",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
-    "[go]": {
-      "editor.insertSpaces": true,
-      "editor.tabSize": 4,
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "golang.go"
-
-  }
 }

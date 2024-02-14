@@ -1,0 +1,31 @@
+services:
+  # GenAI application
+  python-app-tpl:
+    entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_APP_TPL_HTTP_PORT}", "/python-dev-environment/workspace"]
+    environment: &environment-python
+      - PYTHON_APP_TPL_HTTP_PORT=${PYTHON_APP_TPL_HTTP_PORT}
+      - XDG_DATA_HOME=/python-dev-environment/.config
+      - OLLAMA_BASE_URL=http://ollama-service:11434
+    build: &build-python
+      context: .
+      dockerfile: Dockerfile    
+      args:
+        - CODER_VERSION=${CODER_VERSION}
+        - CODER_ARCH=${CODER_ARCH}
+    depends_on:
+      ollama-service:
+        condition: service_started
+    #platform: linux/${LINUX_ARCH}
+    volumes: &volumes-python
+      - ../python-dev-environment:/python-dev-environment
+    ports:
+      - ${PYTHON_APP_TPL_HTTP_PORT}:${PYTHON_APP_TPL_HTTP_PORT}
+
+  python-environment-template-tasks:
+    depends_on:
+      - python-app-tpl
+    entrypoint: ["/python-dev-environment/.tasks/init.sh"]
+    environment: *environment-python
+    build: *build-python  
+    #platform: linux/${LINUX_ARCH}
+    volumes: *volumes-python
