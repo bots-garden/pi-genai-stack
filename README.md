@@ -6,7 +6,6 @@ The main objective is to run 🦙 @ollama and 🐬 TinyDolphin on a Raspberry Pi
 
 ```bash
 git clone git@github.com:bots-garden/pi-genai-stack.git
-# or git clone https://github.com/bots-garden/pi-genai-stack.git
 cd pi-genai-stack
 docker compose up
 ```
@@ -27,7 +26,7 @@ python3 1-give-me-a-dockerfile.py
 python3 2-tell-me-more-about-docker-and-wasm.py
 ```
 
-## How to update the Ollama image
+## How to update Ollam
 
 ```bash
 cd pi-genai-stack
@@ -35,13 +34,43 @@ docker compose down
 docker compose up --build
 ```
 
-## How to update the project on your Pi
+## Test your stack remotely
+
+### First test with a simple curl request
+> - The answer time is long because we do not use streaming
+> - Where `hal.local` is the DNS name of my Pi
 
 ```bash
-cd pi-genai-stack
-git pull
+curl http://hal.local:11434/api/generate -d '{
+  "model": "tinydolphin",
+  "prompt": "Explain simply what is WebAssembly",
+  "stream": false
+}'
 ```
 
+### Get the list of the models
+
+```bash
+curl http://hal.local:11434/api/tags
+```
+
+### Load another model
+
+```bash
+curl http://hal.local:11434/api/pull -d '{
+  "name": "phi"
+}'
+```
+
+> ✋ **llama2** is too big for a Pi
+
+### Delete a model
+
+```bash
+curl -X DELETE http://hal.local:11434/api/delete -d '{
+  "name": "llama2"
+}'
+```
 
 ## Blog posts
 
