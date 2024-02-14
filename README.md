@@ -8,7 +8,7 @@
 ## How to install the stack on the Pi
 
 ```bash
-git clone git@github.com:bots-garden/pi-genai-stack.git
+git clone https://github.com/bots-garden/pi-genai-stack.git
 cd pi-genai-stack
 docker compose up
 ```
