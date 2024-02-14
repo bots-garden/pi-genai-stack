@@ -1,0 +1,17 @@
+services:
+  # 🚧 This is a work in progress
+  # more samples to come
+  python-environment:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python-demo
+    depends_on:
+      ollama-service:
+        condition: service_started
+    environment:
+      - OLLAMA_BASE_URL=http://ollama-service:11434
+    volumes:
+      - ../python-demo:/python-demo
+    ports:
+      - 8000:8000

@@ -1,0 +1,10 @@
+services:
+  # https://cheshirecat.ai/local-models-with-ollama/
+  ollama-service:
+    container_name: ollama_pi_local
+    image: ollama/ollama:latest
+    volumes:
+      - ./ollama:/root/.ollama
+    ports:
+      - 11434:11434
+

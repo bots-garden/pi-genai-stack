@@ -42,6 +42,7 @@ cd pi-genai-stack
 git pull
 ```
 
+
 ## Blog posts
 
 - Host Ollama and TinyDolphin LLM on a Pi5 with Docker Compose: [Run Ollama on a Pi5](https://k33g.hashnode.dev/run-ollama-on-a-pi5)

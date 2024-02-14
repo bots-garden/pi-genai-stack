@@ -1,0 +1,7 @@
+services:
+  download-orca-mini-7b-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "orca-mini:7b"}']
+    depends_on:
+      ollama-service:
+        condition: service_started

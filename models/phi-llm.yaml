@@ -1,0 +1,7 @@
+services:
+  download-phi-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "phi"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
