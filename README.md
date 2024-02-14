@@ -48,6 +48,25 @@ curl http://hal.local:11434/api/generate -d '{
 }'
 ```
 
+Or try this one:
+```bash
+curl http://hal.local:11434/v1/chat/completions \
+-H "Content-Type: application/json" \
+-d '{
+    "model": "tinydolphin",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant."
+        },
+        {
+            "role": "user",
+            "content": "Hello!"
+        }
+    ]
+}'
+```
+
 ### Get the list of the models
 
 ```bash
