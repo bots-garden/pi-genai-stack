@@ -13,7 +13,13 @@ cd pi-genai-stack
 docker compose up
 ```
 
-> 👋 one of the services (from the compose file) will tell Ollama to download the `tinydolphin` LLM, then all the samples of the demos will use this model.
+### Models (LLM)
+
+At start, Pi GenAI Stack will download 3 models:
+- [TinyDolphin](https://ollama.com/library/tinydolphin)
+- [TinyLlama + TinyLlama Chat](https://ollama.com/library/tinyllama)
+
+Then all the samples of the demos will use one of these models.
 
 ## Run the samples of the python-demo
 
