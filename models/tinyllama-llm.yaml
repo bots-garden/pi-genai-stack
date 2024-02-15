@@ -1,0 +1,13 @@
+services:
+  download-tinyllama-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "tinyllama"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
+  download-tinyllama-chat-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "tinyllama:chat"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
