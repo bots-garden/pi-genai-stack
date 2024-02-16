@@ -109,3 +109,4 @@ curl -X DELETE http://hal.local:11434/api/delete -d '{
 ## Blog posts
 
 - Host Ollama and TinyDolphin LLM on a Pi5 with Docker Compose: [Run Ollama on a Pi5](https://k33g.hashnode.dev/run-ollama-on-a-pi5)
+- First Steps with LangChain and the Python toolkit: [Ollama on my Pi5: The Python dev environment](https://k33g.hashnode.dev/ollama-on-my-pi5-the-python-dev-environment)
