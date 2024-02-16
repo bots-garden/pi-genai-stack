@@ -17,6 +17,9 @@ apt-get install -y build-essential curl software-properties-common
 rm -rf /var/lib/apt/lists/*
 EOF
 
-#WORKDIR /python-dev-environment
+WORKDIR /python-dev-environment
+COPY requirements.txt .
+
+RUN pip install --upgrade -r requirements.txt
 
 CMD ["/bin/bash"]
