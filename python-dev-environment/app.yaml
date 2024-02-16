@@ -18,6 +18,8 @@ services:
       - ../python-dev-environment:/python-dev-environment
     ports:
       - ${PYTHON_APP_TPL_HTTP_PORT}:${PYTHON_APP_TPL_HTTP_PORT}
+      # Streamlit
+      - 8501:8501
 
   python-environment-template-tasks:
     depends_on:
