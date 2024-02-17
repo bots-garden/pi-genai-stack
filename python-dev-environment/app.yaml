@@ -7,6 +7,8 @@ services:
       - PYTHON_APP_TPL_HTTP_PORT=${PYTHON_APP_TPL_HTTP_PORT}
       - XDG_DATA_HOME=/python-dev-environment/.config
       - OLLAMA_BASE_URL=http://ollama-service:11434
+      - TLS_CERT=${TLS_CERT}
+      - TLS_CERT_KEY=${TLS_CERT_KEY}
     build: &build-python
       context: .
       dockerfile: Dockerfile    
