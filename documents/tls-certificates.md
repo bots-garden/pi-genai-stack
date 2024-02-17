@@ -10,12 +10,16 @@ TLS_CERT_KEY=hal.genai-stack.ninja.key
 
 - Copy the certificate and the key to the `./certs` folder of the development environment (ex: `python-dev-environment/certs`)
 - Give the appropriates rights to the files: `chmod 777 hal.genai-stack.ninja.*`
-- Add this to your hosts file: `0.0.0.0 hal.genai-stack.ninja`
-- Use this entrypoint in the `app.yaml` file: `entrypoint: ["code-server", "--cert", "/python-dev-environment/certs/${TLS_CERT}", "--cert-key", "/python-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${CODER_HTTP_PORT}", "/python-dev-environment/workspace"]`
+- Add this to your hosts file: 
+  - if you work locally: `0.0.0.0 hal.genai-stack.ninja`
+  - if you work remotely: `<ip address of the pi> hal.genai-stack.ninja`
+- Use this entrypoint in the `app.yaml` file: `entrypoint: ["code-server", "--cert", "/python-dev-environment/certs/${TLS_CERT}", "--cert-key", "/python-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_APP_TPL_HTTP_PORT}", "/python-dev-environment/workspace"]`
 
 open https://hal.genai-stack.ninja:3000
 
 ### Use Mkcert to generate your own certificates
+
+> ✋ **this methods will only work if you work locally**
 
 Install [mkcert](https://github.com/FiloSottile/mkcert)
 
