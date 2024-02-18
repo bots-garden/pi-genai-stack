@@ -1,0 +1,95 @@
+{
+	"name": "material-product-icons",
+	"displayName": "Material Product Icons",
+	"description": "Product Icon Theme with Material Icons for VS Code",
+	"version": "1.7.0",
+	"publisher": "PKief",
+	"author": {
+		"name": "Philipp Kief",
+		"email": "philipp.kief@gmx.de",
+		"url": "https://pkief.github.io"
+	},
+	"funding": "https://github.com/sponsors/PKief",
+	"sponsor": {
+		"url": "https://github.com/sponsors/PKief"
+	},
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"scripts": {
+		"start": "nodemon ./src/index.ts",
+		"build": "ts-node ./src/index.ts",
+		"preview": "ts-node ./src/scripts/preview/index.ts",
+		"changelog": "changelog-machine --config changelog.config.json",
+		"preversion": "npm run preview && git add images/preview.png",
+		"version": "npm run changelog && git add CHANGELOG.md",
+		"lint": "eslint -c .eslintrc.json --ext .ts ./src/**/*.ts"
+	},
+	"homepage": "https://github.com/PKief/vscode-material-product-icons/blob/master/README.md",
+	"repository": {
+		"url": "https://github.com/PKief/vscode-material-product-icons.git",
+		"type": "git"
+	},
+	"bugs": {
+		"url": "https://github.com/PKief/vscode-material-product-icons/issues"
+	},
+	"icon": "logo.png",
+	"galleryBanner": {
+		"color": "#1e1e1e",
+		"theme": "dark"
+	},
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		},
+		"virtualWorkspaces": true
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"icons",
+		"theme",
+		"material",
+		"icon-theme",
+		"product-icon-theme",
+		"customization"
+	],
+	"contributes": {
+		"productIconThemes": [
+			{
+				"id": "material-product-icons",
+				"label": "Material Product Icons",
+				"path": "./theme/material.product-icon-theme.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"@types/puppeteer": "^7.0.4",
+		"@typescript-eslint/eslint-plugin": "^6.8.0",
+		"@typescript-eslint/parser": "^6.8.0",
+		"changelog-machine": "^1.0.2",
+		"eslint": "^8.51.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
+		"nodemon": "^3.0.1",
+		"puppeteer": "^21.3.8",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.2.2",
+		"webfont": "^11.2.26"
+	},
+	"__metadata": {
+		"id": "f797dacd-4e80-4f33-8b63-d665c0956013",
+		"publisherId": "f9e5bc2f-fea1-4075-917f-d83e01e69f56",
+		"publisherDisplayName": "PKief",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1708246604561
+	}
+}

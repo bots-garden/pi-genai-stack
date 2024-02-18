@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@langchain/community": "^0.0.26",
+    "@xenova/transformers": "^2.13.0",
+    "cheerio": "^1.0.0-rc.12",
+    "hnswlib-node": "^2.1.0",
+    "langchain": "^0.0.213",
+    "ollama": "^0.4.4"
+  }
+}

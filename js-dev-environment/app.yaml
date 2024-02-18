@@ -1,0 +1,36 @@
+services:
+  # GenAI application
+  js-dev-environment:
+    entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${JS_DEV_ENV_HTTP_PORT}", "/js-dev-environment/workspace"]
+    # HTTPS entrypoint
+    #entrypoint: ["code-server", "--cert", "/js-dev-environment/certs/${TLS_CERT}", "--cert-key", "/js-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${JS_DEV_ENV_HTTP_PORT}", "/js-dev-environment/workspace"]
+    environment: &environment-js
+      - JS_DEV_ENV_HTTP_PORT=${JS_DEV_ENV_HTTP_PORT}
+      - XDG_DATA_HOME=/js-dev-environment/.config
+      - OLLAMA_BASE_URL=http://ollama-service:11434
+      - TLS_CERT=${TLS_CERT}
+      - TLS_CERT_KEY=${TLS_CERT_KEY}
+    build: &build-js
+      context: .
+      dockerfile: Dockerfile    
+      args:
+        - CODER_VERSION=${CODER_VERSION}
+        - CODER_ARCH=${CODER_ARCH}
+    depends_on:
+      ollama-service:
+        condition: service_started
+    volumes: &volumes-js
+      - ../js-dev-environment:/js-dev-environment
+    ports:
+      - ${JS_DEV_ENV_HTTP_PORT}:${JS_DEV_ENV_HTTP_PORT}
+      # Streamlit
+      #- 8501:8501
+
+  js-dev-environment-tasks:
+    depends_on:
+      - js-dev-environment
+    entrypoint: ["/js-dev-environment/.tasks/init.sh"]
+    environment: *environment-js
+    build: *build-js  
+    #platform: linux/${LINUX_ARCH}
+    volumes: *volumes-js
