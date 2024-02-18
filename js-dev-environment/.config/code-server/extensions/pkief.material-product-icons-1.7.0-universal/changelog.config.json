@@ -1,4 +1,0 @@
-{
-  "repositoryUrl": "https://github.com/PKief/vscode-material-product-icons",
-  "blacklistPattern": "^Release \\d+\\.\\d+\\.\\d+|^\\d+\\.\\d+\\.\\d+$"
-}
