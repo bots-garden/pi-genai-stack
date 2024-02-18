@@ -10,4 +10,4 @@ code-server --install-extension aaron-bond.better-comments
 code-server --install-extension gitpod.gitpod-theme
 code-server --install-extension ms-python.python
 
-echo "🌍 open: http://0.0.0.0:${PYTHON_APP_TPL_HTTP_PORT}"
+echo "🌍 open: http://0.0.0.0:${PYTHON_DEV_ENV_HTTP_PORT}"

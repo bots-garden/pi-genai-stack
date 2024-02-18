@@ -13,3 +13,5 @@ include:
 
   # Start the Python dev environment
   - python-dev-environment/app.yaml
+  # Start the JavaScript dev environment
+  - js-dev-environment/app.yaml

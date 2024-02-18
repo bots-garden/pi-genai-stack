@@ -1,10 +1,10 @@
 services:
   python-dev-environment:
-    entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_APP_TPL_HTTP_PORT}", "/python-dev-environment/workspace"]
+    entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_DEV_ENV_HTTP_PORT}", "/python-dev-environment/workspace"]
     # HTTPS entrypoint
-    #entrypoint: ["code-server", "--cert", "/python-dev-environment/certs/${TLS_CERT}", "--cert-key", "/python-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_APP_TPL_HTTP_PORT}", "/python-dev-environment/workspace"]
+    #entrypoint: ["code-server", "--cert", "/python-dev-environment/certs/${TLS_CERT}", "--cert-key", "/python-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_DEV_ENV_HTTP_PORT}", "/python-dev-environment/workspace"]
     environment: &environment-python
-      - PYTHON_APP_TPL_HTTP_PORT=${PYTHON_APP_TPL_HTTP_PORT}
+      - PYTHON_DEV_ENV_HTTP_PORT=${PYTHON_DEV_ENV_HTTP_PORT}
       - XDG_DATA_HOME=/python-dev-environment/.config
       - OLLAMA_BASE_URL=http://ollama-service:11434
       - TLS_CERT=${TLS_CERT}
@@ -21,7 +21,7 @@ services:
     volumes: &volumes-python
       - ../python-dev-environment:/python-dev-environment
     ports:
-      - ${PYTHON_APP_TPL_HTTP_PORT}:${PYTHON_APP_TPL_HTTP_PORT}
+      - ${PYTHON_DEV_ENV_HTTP_PORT}:${PYTHON_DEV_ENV_HTTP_PORT}
       # Streamlit
       - 8501:8501
 

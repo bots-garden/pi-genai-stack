@@ -1,0 +1,22 @@
+2024-02-18 09:25:01.890 [info] Extension host with pid 44 started
+2024-02-18 09:25:01.891 [error] Error: EEXIST: file already exists, open '/js-dev-environment/.config/code-server/User/workspaceStorage/249d3b10/vscode.lock'
+2024-02-18 09:25:01.894 [info] Lock '/js-dev-environment/.config/code-server/User/workspaceStorage/249d3b10/vscode.lock': Could not acquire lock, checking if the file is stale.
+2024-02-18 09:25:01.897 [info] Lock '/js-dev-environment/.config/code-server/User/workspaceStorage/249d3b10/vscode.lock': The pid 176 appears to be gone.
+2024-02-18 09:25:01.897 [info] Lock '/js-dev-environment/.config/code-server/User/workspaceStorage/249d3b10/vscode.lock': Deleting a stale lock.
+2024-02-18 09:25:01.905 [info] Lock '/js-dev-environment/.config/code-server/User/workspaceStorage/249d3b10/vscode.lock': Lock acquired.
+2024-02-18 09:25:01.970 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-02-18 09:25:01.971 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:javascript'
+2024-02-18 09:25:02.156 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-02-18 09:25:02.257 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-02-18 09:25:02.258 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-02-18 09:25:02.436 [info] Eager extensions activated
+2024-02-18 09:25:02.440 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-02-18 09:25:02.442 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-02-18 09:25:02.443 [info] ExtensionService#_doActivateExtension aaron-bond.better-comments, startup: false, activationEvent: 'onStartupFinished'
+2024-02-18 09:25:02.443 [info] ExtensionService#_doActivateExtension PKief.material-icon-theme, startup: false, activationEvent: 'onStartupFinished'
+2024-02-18 09:27:01.684 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:markdown'
+2024-02-18 09:27:01.688 [info] ExtensionService#_doActivateExtension vscode.markdown-language-features, startup: false, activationEvent: 'onLanguage:markdown'
+2024-02-18 09:27:01.934 [info] ExtensionService#_doActivateExtension vscode.markdown-math, startup: false, activationEvent: 'api', root cause: vscode.markdown-language-features
+2024-02-18 09:43:41.991 [info] Extension host terminating: received terminate message from renderer
+2024-02-18 09:43:41.996 [info] Lock '/js-dev-environment/.config/code-server/User/workspaceStorage/249d3b10/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+2024-02-18 09:43:42.052 [info] Extension host with pid 44 exiting with code 0

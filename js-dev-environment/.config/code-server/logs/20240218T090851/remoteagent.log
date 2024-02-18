@@ -1,0 +1,8 @@
+2024-02-18 09:08:51.786 [info] 
+
+
+
+
+2024-02-18 09:08:51.793 [info] Extension host agent started.
+2024-02-18 09:08:51.839 [error] [192.168.65.1][aa0c3cd0][ManagementConnection] Unknown reconnection token (never seen).
+2024-02-18 09:08:51.861 [error] [192.168.65.1][df363116][ExtensionHostConnection] Unknown reconnection token (never seen).
