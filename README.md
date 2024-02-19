@@ -6,6 +6,8 @@
   - JavaScript dev environment *(available)*
 
 ## How to install the stack on the Pi
+> - The compose file use the `include` feature, so you need at least the [2.21.0 version](https://docs.docker.com/compose/release-notes/#2210)
+
 
 ```bash
 git clone https://github.com/bots-garden/pi-genai-stack.git
@@ -115,3 +117,6 @@ curl -X DELETE http://hal.local:11434/api/delete -d '{
 
 - Host Ollama and TinyDolphin LLM on a Pi5 with Docker Compose: [Run Ollama on a Pi5](https://k33g.hashnode.dev/run-ollama-on-a-pi5)
 - First Steps with LangChain and the Python toolkit: [Ollama on my Pi5: The Python dev environment](https://k33g.hashnode.dev/ollama-on-my-pi5-the-python-dev-environment)
+- [Prompts and Chains with Ollama and LangChain](https://k33g.hashnode.dev/prompts-and-chains-with-ollama-and-langchain)
+- [Make a GenAI Web app in less than 40 lines of code](https://k33g.hashnode.dev/make-a-genai-web-app-in-less-than-40-lines-of-code)
+
