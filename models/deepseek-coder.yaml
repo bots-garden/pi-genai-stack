@@ -1,0 +1,13 @@
+services:
+  download-deepseek-coder-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "deepseek-coder"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
+  download-deepseek-coder-instruct-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "deepseek-coder:instruct"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
