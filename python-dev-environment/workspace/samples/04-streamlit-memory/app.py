@@ -5,7 +5,7 @@ from langchain.prompts import PromptTemplate
 
 # All we need for a good chat
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import LLMChain
+from langchain.chains import ConversationChain
 
 import streamlit as st
 
@@ -32,13 +32,12 @@ prompt_template = PromptTemplate(
 ) 
 
 model = ollama.Ollama(
-    temperature=0,
-    repeat_penalty=1,
+    temperature=0.2,
     base_url=ollama_base_url, 
     model='tinyllama',
 )
 
-conversation_chain = LLMChain(
+conversation_chain = ConversationChain(
     prompt=prompt_template,
     llm=model,
     memory=memory,
@@ -56,9 +55,10 @@ user_input = st.chat_input("Topic:")
 # has entered a topic  
 if user_input:
     st_callback = StreamlitCallbackHandler(st.container())
-    response = conversation_chain(user_input, callbacks=[st_callback])
+    #response = conversation_chain(user_input, callbacks=[st_callback])
+    response = conversation_chain.run(input=user_input, history=st.session_state["chat_history"], callbacks=[st_callback])
 
-    message = {'human': user_input, 'AI': response['text']}
+    message = {'human': user_input, 'AI': response} #'text'
     st.session_state.chat_history.append(message)
     
     with st.expander(label='Chat history', expanded=False):
