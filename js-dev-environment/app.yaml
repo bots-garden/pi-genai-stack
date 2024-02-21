@@ -8,7 +8,7 @@ services:
       - JS_DEV_ENV_HTTP_PORT=${JS_DEV_ENV_HTTP_PORT}
       - XDG_DATA_HOME=/js-dev-environment/.config
       - OLLAMA_BASE_URL=http://ollama-service:11434
-      - #OLLAMA_BASE_URL=http://host.docker.internal:11434
+      #- OLLAMA_BASE_URL=http://host.docker.internal:11434
       - TLS_CERT=${TLS_CERT}
       - TLS_CERT_KEY=${TLS_CERT_KEY}
     build: &build-js
