@@ -1,0 +1,13 @@
+services:
+  download-gemma-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "gemma"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
+  download-gemma-instruct-llm:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "ollama-service:11434/api/pull", "-d", '{"name": "gemma:instruct"}']
+    depends_on:
+      ollama-service:
+        condition: service_started
