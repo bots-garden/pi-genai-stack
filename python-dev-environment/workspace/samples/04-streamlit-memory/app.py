@@ -32,7 +32,7 @@ prompt_template = PromptTemplate(
 ) 
 
 model = ollama.Ollama(
-    temperature=0.2,
+    temperature=0,
     base_url=ollama_base_url, 
     model='tinyllama',
 )
