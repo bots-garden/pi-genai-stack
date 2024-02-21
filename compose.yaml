@@ -8,7 +8,7 @@ include:
   #- models/phi-llm.yaml
   #- models/orca-mini-7b-llm.yaml
   - models/deepseek-coder.yaml
-  #- models/gemma.yaml
+  - models/gemma.yaml
 
   # Start GenAI application demo
   - python-demo/app.yaml
