@@ -56,10 +56,9 @@ user_input = st.chat_input("Topic:")
 # has entered a topic  
 if user_input:
     st_callback = StreamlitCallbackHandler(st.container())
-    #response = conversation_chain(user_input, callbacks=[st_callback])
     response = conversation_chain.run(input=user_input, history=st.session_state["chat_history"], callbacks=[st_callback])
 
-    message = {'human': user_input, 'AI': response} #'text'
+    message = {'human': user_input, 'AI': response} # it's raw text
     st.session_state.chat_history.append(message)
     
     with st.expander(label='Chat history', expanded=False):

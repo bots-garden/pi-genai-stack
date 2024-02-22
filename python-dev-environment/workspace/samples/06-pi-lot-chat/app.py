@@ -10,7 +10,7 @@ from langchain.memory import ConversationBufferMemory
 
 from langchain_community.callbacks import StreamlitCallbackHandler
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
+from langchain.chains import ConversationChain
 
 
 import streamlit as st
@@ -57,7 +57,7 @@ prompt_template = PromptTemplate(
     """
 ) 
 
-conversation_chain = LLMChain(
+conversation_chain = ConversationChain(
     prompt=prompt_template,
     llm=llm,
     memory=memory,
@@ -76,9 +76,10 @@ with side_bar:
 
         st_callback = StreamlitCallbackHandler(st.container())
 
-        response = conversation_chain(user_input, callbacks=[st_callback])
-        
-        message = {'human': user_input, 'AI': response['text']}
+        #response = conversation_chain(user_input, callbacks=[st_callback])
+        response = conversation_chain.run(input=user_input, history=st.session_state["chat_history"], callbacks=[st_callback])
+
+        message = {'human': user_input, 'AI': response}
         st.session_state.chat_history.append(message)
         
 

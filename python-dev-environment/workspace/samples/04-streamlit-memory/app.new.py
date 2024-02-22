@@ -18,13 +18,12 @@ if 'chat_history' not in st.session_state:
 else:
     for message in st.session_state.chat_history:
         memory.save_context({'input': message['human']}, {'output': message['AI']})
-
+        
 prompt_template = PromptTemplate(
     input_variables=['history', 'input'],
     template="""
-    You are a technical writer, specialist with the rustlang programming languages, 
-    you will write an answer to the question for the noobs,
-    with some source code examples.
+    You are a friendly bot.
+    Conversation history:
     {history}
 
     Human: {input}
@@ -36,7 +35,7 @@ model = ollama.Ollama(
     temperature=0,
     repeat_penalty=1,
     base_url=ollama_base_url, 
-    model='deepseek-coder:instruct',
+    model='tinyllama',
 )
 
 conversation_chain = ConversationChain(
@@ -47,8 +46,7 @@ conversation_chain = ConversationChain(
 )
 
 # Add a title and a subtitle to the webapp
-st.title("🤖 I'm Pi-Lot")
-st.header("I 💙 programming with 🦀 Rust")
+st.title("🤓 Ask me anything")
 st.header("👋 I'm running on a PI5")
 
 # Text input fields
@@ -58,13 +56,12 @@ user_input = st.chat_input("Topic:")
 # has entered a topic  
 if user_input:
     st_callback = StreamlitCallbackHandler(st.container())
-
-    result = conversation_chain.invoke(
+    response = conversation_chain.invoke(
         {"input":user_input, "history":st.session_state["chat_history"]}, 
         {"callbacks":[st_callback]}
     )
 
-    message = {'human': user_input, 'AI': result["response"]}
+    message = {'human': user_input, 'AI': response["response"]} 
     st.session_state.chat_history.append(message)
     
     with st.expander(label='Chat history', expanded=False):
