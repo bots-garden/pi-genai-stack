@@ -3,7 +3,7 @@ services:
   ollama-service:
     container_name: ollama_pi_local
     #image: ollama/ollama:latest
-    image: ollama/ollama:0.1.26
+    image: ollama/ollama:0.1.27
     volumes:
       - ../ollama:/root/.ollama
     ports:
