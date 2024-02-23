@@ -22,9 +22,8 @@ else:
 prompt_template = PromptTemplate(
     input_variables=['history', 'input'],
     template="""
-    You are a technical writer, specialist with the rustlang programming languages, 
-    you will write an answer to the question for the noobs,
-    with some source code examples.
+    You are a friendly bot.
+    Conversation history:
     {history}
 
     Human: {input}
@@ -36,7 +35,8 @@ model = ollama.Ollama(
     temperature=0,
     repeat_penalty=1,
     base_url=ollama_base_url, 
-    model='gemma:2b-instruct',
+    model='gemma:2b',
+    #model='gemma:2b-instruct',
 )
 
 conversation_chain = ConversationChain(
@@ -47,8 +47,7 @@ conversation_chain = ConversationChain(
 )
 
 # Add a title and a subtitle to the webapp
-st.title("🤖 I'm Pi-Lot")
-st.header("I 💙 programming with 🦀 Rust")
+st.title("🤖 I'm Pi-Lot & I 💙 Gemma")
 st.header("👋 I'm running on a PI5")
 
 # Text input fields

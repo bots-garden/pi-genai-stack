@@ -19,19 +19,13 @@ from langchain_community.embeddings import OllamaEmbeddings
 import streamlit as st
 
 ollama_base_url = os.getenv("OLLAMA_BASE_URL")
-current_model='tinydolphin'
+current_model='gemma:2b'
 
 # use the document
 #-----------------------
 # RAG
 #-----------------------
-with open("./information.md") as f:
-    documents = f.read()
 
-print("🤖 Split documents into chunks...")
-# Split documents into chunks
-text_splitter = CharacterTextSplitter(chunk_size=1500, chunk_overlap=30)
-texts = text_splitter.split_text(documents)
 
 print("🤖 Select embeddings...")
 # Select embeddings
@@ -40,12 +34,16 @@ embeddings = OllamaEmbeddings(
     model=current_model
 )
 
-print("🤖 Create a vectorstore from documents...")
+print("🤖 Open the vectorstore")
 # Create a vectorstore from documents
-docsearch = Chroma.from_texts(
-    texts, embeddings, metadatas=[{"source": i} for i in range(len(texts))]
+
+persist_directory = './chroma_storage'
+
+vectordb = Chroma(
+    persist_directory=persist_directory,
+    embedding_function=embeddings
 )
-print("🤖 Done with documents...")
+print("🤖 Vectorstore loaded")
 
 #-----------------------
 # Prompt
@@ -83,6 +81,7 @@ chain = load_qa_chain(
     prompt=prompt
 )
 
+
 # Page title
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 st.title('🦜🔗 Ask the Doc App')
@@ -96,7 +95,7 @@ if user_input:
     #with st.spinner('Calculating...'):
     st_callback = StreamlitCallbackHandler(st.container())
 
-    docs = docsearch.similarity_search(user_input)
+    docs = vectordb.similarity_search(user_input)
     #response = chain.invoke({"input_documents": docs, "human_input": user_input}, return_only_outputs=True)
     
     response = chain.run(input_documents=docs, human_input=user_input, callbacks=[st_callback])
