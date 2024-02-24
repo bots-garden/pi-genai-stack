@@ -1,7 +1,3 @@
-# TODO:
-# When it will work -> make a GenAI app
-# Create a domain name
-
 import os
 
 from langchain_community.chat_models import ChatOllama
@@ -17,17 +13,16 @@ import streamlit as st
 
 ollama_base_url = os.getenv("OLLAMA_BASE_URL")
 
+st.title("🤖 I'm Pi-Lot & I 💙 DeepSeek Coder")
 
-st.title("🤖 IKnowIt powered by 🦜🔗 LangChain, 🦙 Ollama and 👑 StreamLit")
+st.header("👋 I'm powered by 🦜🔗 LangChain, 🦙 Ollama and 👑 StreamLit")
 
-llm = ChatOllama(
+model = ChatOllama(
     base_url=ollama_base_url, 
     model='deepseek-coder:instruct',
     temperature=0,
     repeat_penalty=1,
 )
-
-st.header("🤓 Chatterbox")
 
 user_input = st.chat_input("👋 Type your question here:")
 
@@ -59,7 +54,7 @@ prompt_template = PromptTemplate(
 
 conversation_chain = ConversationChain(
     prompt=prompt_template,
-    llm=llm,
+    llm=model,
     memory=memory,
     verbose=True, # then you can see the intermediate messages
 )
@@ -76,13 +71,15 @@ with side_bar:
 
         st_callback = StreamlitCallbackHandler(st.container())
 
-        #response = conversation_chain(user_input, callbacks=[st_callback])
-        response = conversation_chain.run(input=user_input, history=st.session_state["chat_history"], callbacks=[st_callback])
+        result = conversation_chain.invoke(
+            {"input":user_input, "history":st.session_state["chat_history"]}, 
+            {"callbacks":[st_callback]}
+        )
 
-        message = {'human': user_input, 'AI': response}
+        message = {'human': user_input, 'AI': result["response"]}
+
         st.session_state.chat_history.append(message)
         
-
 with st.container():
 
     # Display chat history
@@ -92,6 +89,3 @@ with st.container():
             st.markdown(message['human'])
         with st.chat_message('AI'):
             st.markdown(message['AI'])
-
-
-
