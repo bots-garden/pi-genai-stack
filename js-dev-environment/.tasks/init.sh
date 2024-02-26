@@ -8,8 +8,8 @@ code-server --install-extension PKief.material-icon-theme
 code-server --install-extension PKief.material-product-icons
 code-server --install-extension aaron-bond.better-comments
 code-server --install-extension gitpod.gitpod-theme
+code-server --install-extension pomdtr.excalidraw-editor
 
 yarn --cwd js-dev-environment install
-
 
 echo "🌍 open: http://0.0.0.0:${JS_DEV_ENV_HTTP_PORT}"

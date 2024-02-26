@@ -3,10 +3,7 @@ include:
   - ollama-runtime/ollama.yaml
   # Download LLMs
   - models/tinydolphin-llm.yaml
-  # model + chat model
   - models/tinyllama-llm.yaml
-  #- models/phi-llm.yaml
-  #- models/orca-mini-7b-llm.yaml
   - models/deepseek-coder.yaml
   - models/gemma.yaml
 

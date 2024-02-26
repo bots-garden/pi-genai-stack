@@ -18,9 +18,5 @@ rm -rf /var/lib/apt/lists/*
 EOF
 
 WORKDIR /js-dev-environment
-#COPY package.json .
-#RUN yarn install
-#RUN yarn --cwd js-dev-environment install
-#RUN yarn --cwd . install
 
 CMD ["/bin/bash"]

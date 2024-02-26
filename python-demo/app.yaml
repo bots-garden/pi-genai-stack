@@ -2,6 +2,7 @@ services:
   # 🚧 This is a work in progress
   # more samples to come
   python-environment:
+    profiles: [demo]
     build:
       context: .
       dockerfile: Dockerfile

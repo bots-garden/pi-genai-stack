@@ -1,5 +1,6 @@
 services:
   python-dev-environment:
+    profiles: [python]
     entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_DEV_ENV_HTTP_PORT}", "/python-dev-environment/workspace"]
     # HTTPS entrypoint
     #entrypoint: ["code-server", "--cert", "/python-dev-environment/certs/${TLS_CERT}", "--cert-key", "/python-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${PYTHON_DEV_ENV_HTTP_PORT}", "/python-dev-environment/workspace"]
@@ -26,6 +27,7 @@ services:
       - 8501:8501
 
   python-dev-environment-tasks:
+    profiles: [python]
     depends_on:
       - python-dev-environment
     entrypoint: ["/python-dev-environment/.tasks/init.sh"]

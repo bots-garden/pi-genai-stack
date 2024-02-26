@@ -1,6 +1,7 @@
 services:
   # GenAI application
   js-dev-environment:
+    profiles: [javascript]
     entrypoint: ["code-server", "--auth", "none", "--host", "0.0.0.0", "--port", "${JS_DEV_ENV_HTTP_PORT}", "/js-dev-environment/workspace"]
     # HTTPS entrypoint
     #entrypoint: ["code-server", "--cert", "/js-dev-environment/certs/${TLS_CERT}", "--cert-key", "/js-dev-environment/certs/${TLS_CERT_KEY}", "--auth", "none", "--host", "0.0.0.0", "--port", "${JS_DEV_ENV_HTTP_PORT}", "/js-dev-environment/workspace"]
@@ -27,6 +28,7 @@ services:
       #- 8501:8501
 
   js-dev-environment-tasks:
+    profiles: [javascript]
     depends_on:
       - js-dev-environment
     entrypoint: ["/js-dev-environment/.tasks/init.sh"]

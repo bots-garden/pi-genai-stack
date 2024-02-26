@@ -23,7 +23,7 @@ let stream = await llmChain.invoke({
   input: "what is GoLang?",
 })
 
-const chunks = [];
+const chunks = []
 for await (const chunk of stream) {
   chunks.push(chunk)
 }
