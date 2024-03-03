@@ -1,5 +1,4 @@
 import {Ollama} from 'ollama'
-// https://github.com/ollama/ollama-js?tab=readme-ov-file#streaming-responses
 
 let ollama_base_url = process.env.OLLAMA_BASE_URL
 
@@ -8,11 +7,10 @@ let ollama = new Ollama({
 })
 
 const response = await ollama.chat({
-
-  model: 'tinyllama',
+  model: 'deepseek-coder',
   messages: [{ 
     role: 'user', 
-    content: 'I need a golang function to reverse a string' 
+    content: 'write me a simple rustlang tutorial that prints "hello world"' 
   }],
   stream: true
 })

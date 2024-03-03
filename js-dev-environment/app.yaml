@@ -24,8 +24,8 @@ services:
       - ../js-dev-environment:/js-dev-environment
     ports:
       - ${JS_DEV_ENV_HTTP_PORT}:${JS_DEV_ENV_HTTP_PORT}
-      # Streamlit
-      #- 8501:8501
+      # Fastify
+      - 8080:8080
 
   js-dev-environment-tasks:
     profiles: [javascript]

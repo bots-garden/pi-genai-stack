@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Pi GenAI Stack</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <script src="./js/markdown-it.min.js"></script>
+
+</head>
+  <body>
+    <div class="container">
+      <section class="hero is-medium">
+        <div class="hero-body">
+          <p class="title is-1">
+            Pi GenAI Stack 🦙🦜🔗
+          </p>
+          <p class="subtitle is-3">
+            Propulsed by 🐳 Compose & LangChainJS
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+
+      <div class="field">
+        <label class="label">What:</label>
+        <p class="control">
+          <input id="txt_something" class="input" type="text" placeholder="Type what you want">
+        </p>
+      </div>
+
+      <div class="field">
+        <label class="label">Language:</label>
+        <p class="control">
+          <input id="txt_language" class="input" type="text" placeholder="Choose your language">
+        </p>
+      </div>
+
+      <div class="content">
+        <div class="field is-grouped">
+          <div class="control">
+            <button id="btn_submit" class="button is-link">Submit</button>
+          </div>
+          <div class="control">
+            <button id="btn_stop" class="button is-link is-light">Stop</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <article class="message is-dark">
+          <div class="message-header">
+            <p>🤖 Answer:</p>
+          </div>
+          <div id="txt_response" class="message-body">
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+
+    </div>
+    <script type="module">
+
+      // https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_streams
+
+      let btnSubmit = document.querySelector("#btn_submit")
+      let btnStop = document.querySelector("#btn_stop")
+
+
+      let txtSomething = document.querySelector("#txt_something")
+      let txtLanguage = document.querySelector("#txt_language")
+
+      let txtResponse = document.querySelector("#txt_response")
+
+      let aborter = new AbortController()
+
+
+      btnSubmit.addEventListener("click", async _ => {
+
+        let responseText=""
+
+        try {
+
+          const response = await fetch("/prompt", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              something: txtSomething.value,
+              language: txtLanguage.value
+            }),
+            signal: aborter.signal
+          })
+
+
+          const reader = response.body.getReader()
+
+          while (true) {
+            const { done, value } = await reader.read()
+            if (done) {
+              // Do something with last chunk of data then exit reader
+              txtSomething.value = ""
+              txtLanguage.value = ""
+              return
+            }
+            // Otherwise do something here to process current chunk
+            const decodedValue = new TextDecoder().decode(value)
+            console.log(decodedValue)
+            responseText = responseText + decodedValue
+            txtResponse.innerHTML = markdownit().render(responseText)
+          }
+
+        } catch(error) {
+          if (error.name === 'AbortError') {
+            console.log("✋", "Fetch request aborted")
+            txtSomething.value = ""
+            txtLanguage.value = ""
+            aborter = new AbortController()
+          } else {
+            console.log("😡", error)
+          }
+        }
+
+
+
+      })
+
+      btnStop.addEventListener("click", async _ => {
+        aborter.abort()
+
+      })
+
+    </script>
+  </body>
+
+</html>
