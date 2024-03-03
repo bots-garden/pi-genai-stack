@@ -10,7 +10,7 @@ const response = await ollama.chat({
   model: 'deepseek-coder',
   messages: [{ 
     role: 'user', 
-    content: 'write me a simple rustlang tutorial that prints "hello world"' 
+    content: 'what is rustlang?' 
   }],
   stream: true
 })

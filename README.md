@@ -28,7 +28,7 @@ Then all the samples of the demos will use one of these models.
 
 > start the stack with the demo
 ```bash
-docker compose --profile demo
+docker compose --profile demo up
 ```
 
 Use the `python` with the interactive mode:
@@ -54,6 +54,8 @@ The Python dev environment is a Web IDE based on [Coder Server](https://github.c
 
 ![python dev environment](documents/pictures/python-dev-environment.png)
 
+> To use it remotely (to connect to the WebIDE running on the Pi from your workstation), use the DNS name of your Pi or its IP address. For example `http://hal.local:3000` (where `hal.local` is the DNS name of my Pi).
+
 ## Use the JavaScript dev environment
 
 > start the stack with the JavaScript dev environment
@@ -63,6 +65,7 @@ docker compose --profile javascript up
 
 The JavaScript dev environment is a Web IDE based on [Coder Server](https://github.com/coder/code-server) with the Node.js runtime and tools. The environment is starded as a Docker Compose service and you can open the IDE with this URL: http://localhost:3001.
 
+> To use it remotely (to connect to the WebIDE running on the Pi from your workstation), use the DNS name of your Pi or its IP address. For example `http://hal.local:3001` (where `hal.local` is the DNS name of my Pi).
 
 ## Test your stack remotely
 
