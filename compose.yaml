@@ -6,6 +6,7 @@ include:
   - models/tinyllama-llm.yaml
   - models/deepseek-coder.yaml
   - models/gemma.yaml
+  #- models/miniml.yaml # only embeddings
 
   # Start GenAI application demo
   - python-demo/app.yaml
