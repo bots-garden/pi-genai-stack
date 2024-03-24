@@ -17,6 +17,11 @@
     node-fetch "^2.6.7"
     web-streams-polyfill "^3.2.1"
 
+"@extism/extism@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@extism/extism/-/extism-1.0.2.tgz#c3fa6cc84f47329ec02592ad63731fc66bad615b"
+  integrity sha512-cT48pP0mOroj4Z/gcS/PceRviIUH9vWMGhkDc5H84wXcEeOHjiyfcY4l67Gc6BvNBrvNl7sYq/XlOh2f9aEs6g==
+
 "@fastify/accept-negotiator@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@fastify/accept-negotiator/-/accept-negotiator-1.1.0.tgz#c1c66b3b771c09742a54dd5bc87c582f6b0630ff"
